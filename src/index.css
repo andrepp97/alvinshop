@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:500,500i,600,600i,700&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, 'Muli', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+}

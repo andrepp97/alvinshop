@@ -22,8 +22,8 @@ const Sidebar = (props) => {
     const renderMenu = () => {
         return sideMenu.map((item,idx) => {
             return (
-                <Link to={item.url} key={idx} className="side-menu" onClick={() => setCurrentURL(item.url)}>
-                    <MDBListGroupItem className={`d-flex justify-content-between align-items-center px-4 mb-3 ${currentURL === item.url ? 'active' : null}`}>
+                <Link to={item.url} key={idx} onClick={() => setCurrentURL(item.url)}>
+                    <MDBListGroupItem id="side-menu" className={`px-4 mb-3 ${currentURL === item.url ? 'active text-white font-weight-bold' : null}`}>
                         <MDBIcon icon={item.icon} className="mr-3" />
                         {item.label}
                     </MDBListGroupItem>

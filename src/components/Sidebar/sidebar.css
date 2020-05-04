@@ -7,11 +7,16 @@
     transition: .25s;
 }
 
-.side-menu {
+#side-menu {
     text-decoration: none;
+    border-radius: 50px;
     color: #3d3d3d;
     transition: .25s;
 }
-.side-menu:hover {
-    clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+#side-menu:hover {
+    font-weight: bold;
+}
+
+.active {
+    color: white;
 }

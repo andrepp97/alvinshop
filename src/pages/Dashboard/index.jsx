@@ -53,6 +53,7 @@ class Dashboard extends Component {
     // LIFECYCLE
     componentDidMount() {
         this.createChart1()
+        document.title = "ALVIN SHOP | Dashboard"
     }
 
     componentWillUnmount() {

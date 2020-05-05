@@ -36,7 +36,11 @@ class App extends Component {
         
         { currentURL === '/' ? null : <Sidebar /> }
 
-        <div id="main-content" className="p-4" style={ currentURL === '/' ? null : { marginLeft:'225px', transition:'.25s' } }>
+        <div
+          id="main-content"
+          className="py-3 px-2"
+          style={ currentURL === '/' ? null : { marginLeft:'225px', transition:'.25s' } }
+        >
 
           <Switch>
             <Route exact path='/' component={Auth} />

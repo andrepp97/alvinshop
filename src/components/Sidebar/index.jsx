@@ -23,7 +23,15 @@ const Sidebar = (props) => {
         return sideMenu.map((item,idx) => {
             return (
                 <Link to={item.url} key={idx} onClick={() => setCurrentURL(item.url)}>
-                    <MDBListGroupItem id="side-menu" className={`px-4 mb-3 ${currentURL === item.url ? 'active text-white font-weight-bold' : null}`}>
+                    <MDBListGroupItem
+                        id="side-menu"
+                        className="px-4 mb-3"
+                        style={
+                            currentURL === item.url
+                            ? {background: '#2952a5', color: '#fff', fontWeight: 'bold', borderRadius: '50px'}
+                            : {}
+                        }
+                    >
                         <MDBIcon icon={item.icon} className="mr-3" />
                         {item.label}
                     </MDBListGroupItem>

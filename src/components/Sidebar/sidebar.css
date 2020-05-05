@@ -1,5 +1,6 @@
 .sidebar-admin {
-    position: absolute;
+    position: fixed;
+    overflow-y: auto;
     min-height: 100vh;
     width: 225px;
     left: 0;
@@ -9,14 +10,13 @@
 
 #side-menu {
     text-decoration: none;
-    border-radius: 50px;
+    letter-spacing: .5px;
     color: #3d3d3d;
+    padding-top: 8px;
+    padding-bottom: 8px;
     transition: .25s;
 }
 #side-menu:hover {
     font-weight: bold;
-}
-
-.active {
-    color: white;
+    border-radius: 50px;
 }

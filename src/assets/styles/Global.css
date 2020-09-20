@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:500,500i,600,600i,700&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, 'Muli', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+}
+
+
+
+/* GENERAL */
+#main-content {
+  background: whitesmoke;
+  min-height: calc(100vh - 48px);
+}
+
+.content-shift {
+  transition: .25s;
+  padding: 2rem 1rem;
+  margin-left: 225px;
+}
+
+.page-title {
+  border-bottom: 2px solid #1C2331;
+  margin-bottom: 2rem;
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}

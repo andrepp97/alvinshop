@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 // APP
-import './index.css';
 import App from './App';
+import './assets/styles/Global.css';
+import AuthReducer from './context/AuthContext';
 import * as serviceWorker from './serviceWorker';
 
 // MDBREACT
@@ -14,7 +15,9 @@ import 'mdbreact/dist/css/mdb.css';
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <AuthReducer>
+            <App />
+        </AuthReducer>
     </BrowserRouter>,
     document.getElementById('root')
 );

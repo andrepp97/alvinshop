@@ -1,33 +1,84 @@
-import React from 'react';
-import { MDBAnimation, MDBContainer, MDBRow, MDBInput, MDBBtn } from 'mdbreact';
+import React, { useContext, useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { MDBInput } from 'mdbreact';
+import './auth.css';
+
+import { AuthContext } from '../../context/AuthContext';
 
 const Auth = () => {
+    // CONTEXT
+    const { userState, dispatch } = useContext(AuthContext)
+
+    // STATE
+    const [loading, setLoading] = useState(false)
+    const [state, setState] = useState({
+        username: "",
+        password: "",
+    })
+
+    // LOGIN FUNCTION
     const onUserLogin = () => {
-        window.location.pathname = '/Dashboard'
+        if (state.username === "sysadmin" && state.password === "admin") {
+            setLoading(true)
+            let userToken = "jjK02.p9swQ880"
+            localStorage.setItem("@alvinshop", userToken)
+            setTimeout(() => {
+                dispatch({
+                    type: "LOGIN",
+                    id: 1,
+                    username: "Alvinshop",
+                    role: "sysadmin",
+                    token: userToken,
+                })
+            }, 1000)
+        } else {
+            alert("Unauthorized")
+        }
     }
 
-    return (
-        <div style={{ position: 'fixed', top: 0, bottom: 0, left: 0, right: 0, backgroundImage: 'linear-gradient(100deg,#0e7ec9,#8639a8)' }}>
-            <MDBContainer>
-                <MDBAnimation type="fadeIn">
-                    <MDBRow className="d-flex align-items-center" style={{ minHeight: '90vh' }}>
-                        <div className="col-lg-6 offset-lg-3">
-                            <div className="card px-5 py-4">
-                                <p className="h5 text-center mb-4">ADMIN AREA</p>
-                                <div className="grey-text">
-                                    <MDBInput outline label="Username" icon="user" type="email" />
-                                    <MDBInput outline label="Password" icon="lock" type="password" />
-                                </div>
-                                <div className="text-center">
-                                    <MDBBtn color="deep-purple" className="rounded-pill px-5" onClick={onUserLogin}>
-                                        <span style={{ letterSpacing: '2px', fontWeight: 'bold' }}>Login</span>
-                                    </MDBBtn>
-                                </div>
-                            </div>
-                        </div>
-                    </MDBRow>
-                </MDBAnimation>
-            </MDBContainer>
+    // LOGIN WHEN KEYUP
+    const onLoginKeyup = event => {
+        if (event.key === "Enter") {
+            onUserLogin()
+        }
+    }
+
+    // RENDER
+    return userState.userToken
+    ? <Redirect to="/dashboard" />
+    : (
+        <div className="auth-container">
+            <div className="auth-card shadow">
+                <div className="card-body">
+                    <div className="card-title">
+                        LOGO
+                    </div>
+                    <hr/>
+                    <MDBInput
+                        outline
+                        icon="user"
+                        label="Username"
+                        value={state.username}
+                        onChange={e => setState({...state, username: e.target.value})}
+                    />
+                    <MDBInput
+                        outline
+                        icon="lock"
+                        type="password"
+                        label="Password"
+                        value={state.password}
+                        onKeyUp={onLoginKeyup}
+                        onChange={e => setState({...state, password: e.target.value})}
+                    />
+                    <button
+                        disabled={loading}
+                        onClick={onUserLogin}
+                        className="btn btn-block btn-elegant py-2"
+                    >
+                        {loading ? "Login . . ." : "Login"}
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

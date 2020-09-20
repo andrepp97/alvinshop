@@ -1,15 +1,18 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import {
     MDBNavbar, MDBNavbarNav,
     MDBNavItem, MDBDropdown,
     MDBDropdownToggle, MDBDropdownMenu,
     MDBDropdownItem, MDBIcon
 } from "mdbreact";
+import { AuthContext } from '../../context/AuthContext';
 
+const NavbarPage = () => {
+    // CONTEXT
+    const { dispatch } = useContext(AuthContext)
 
-class NavbarPage extends Component {
     // NAVBAR TOGGLE
-    navClose = () => {
+    const navClose = () => {
         document.getElementById('sidenav').style.marginLeft = '-225px'
         document.getElementById('topnav').style.marginLeft = 0
         document.getElementById('main-content').style.marginLeft = 0
@@ -17,23 +20,24 @@ class NavbarPage extends Component {
         document.getElementById('toggleRight').classList.remove('d-none')
     }
 
-    navOpen = () => {
+    const navOpen = () => {
         document.getElementById('sidenav').style.marginLeft = 0
         document.getElementById('topnav').style.marginLeft = '225px'
         document.getElementById('main-content').style.marginLeft = '225px'
         document.getElementById('toggleLeft').classList.remove('d-none')
         document.getElementById('toggleRight').classList.add('d-none')
     }
-    // NAVBAR TOGGLE
 
-    // USER ACTIONS
-    onUserLogout = () => {
-        window.location.pathname = '/'
+    // LOGOUT FUNCTION
+    const onUserLogout = () => {
+        localStorage.removeItem("@alvinshop")
+        navClose()
+        dispatch({
+            type: 'LOGOUT'
+        })
     }
-    // USER ACTIONS
 
-    // MAIN RENDER
-    render() {
+    // RENDER
     return (
         <MDBNavbar 
             dark
@@ -42,11 +46,11 @@ class NavbarPage extends Component {
             className="pr-5 py-1"
             style={{marginLeft:'225px', transition: '.25s'}}>
 
-            <span id="toggleLeft" className="text-white" style={{cursor:'pointer'}} onClick={this.navClose}>
+            <span id="toggleLeft" className="text-white pointer-cursor" onClick={navClose}>
                 <i className="fa fa-chevron-left"></i>
                 <i className="fa fa-chevron-left"></i>
             </span>
-            <span id="toggleRight" className="text-white d-none" style={{cursor:'pointer'}} onClick={this.navOpen}>
+            <span id="toggleRight" className="text-white d-none pointer-cursor" onClick={navOpen}>
                 <i className="fa fa-chevron-right"></i>
                 <i className="fa fa-chevron-right"></i>
             </span>    
@@ -58,7 +62,7 @@ class NavbarPage extends Component {
                             <MDBIcon icon="user-circle" size="lg" />
                         </MDBDropdownToggle>
                         <MDBDropdownMenu right>
-                            <MDBDropdownItem onClick={this.onUserLogout}>
+                            <MDBDropdownItem onClick={onUserLogout}>
                                 <MDBIcon icon="sign-out-alt" />
                                 <span className="font-weight-bold ml-2">Logout</span>
                             </MDBDropdownItem>
@@ -68,8 +72,7 @@ class NavbarPage extends Component {
             </MDBNavbarNav>
 
         </MDBNavbar>
-        );
-    }
-    }
+    )
+}
 
 export default NavbarPage;

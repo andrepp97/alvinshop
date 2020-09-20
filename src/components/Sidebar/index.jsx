@@ -25,10 +25,10 @@ const Sidebar = (props) => {
                 <Link to={item.url} key={idx} onClick={() => setCurrentURL(item.url)}>
                     <MDBListGroupItem
                         id="side-menu"
-                        className="px-4 mb-3"
+                        className="px-3 mb-3"
                         style={
                             currentURL === item.url
-                            ? {background: '#2952a5', color: '#fff', fontWeight: 'bold', borderRadius: '50px'}
+                            ? {background: '#1C2331', color: '#fff', fontWeight: 'bold', borderRadius: '50px'}
                             : {}
                         }
                     >
@@ -55,14 +55,14 @@ const Sidebar = (props) => {
     return (
         <div
             id="sidenav"
-            className="bg-dark sidebar-admin"
+            className="sidebar-admin"
         >
 
             {/* SIDEBAR HEADER */}
             <MDBContainer fluid>
-                <div className="text-center py-3 mb-5">
+                <div className="text-center py-2 mb-4">
                     <MDBNavbarBrand className="white-text text-uppercase border w-100 mx-auto">
-                        <h5 className="m-0">Alvin Shop</h5>
+                        <h5 className="m-0">Alvinshop</h5>
                     </MDBNavbarBrand>
                 </div>
             </MDBContainer>
@@ -70,7 +70,7 @@ const Sidebar = (props) => {
 
             {/* SIDEBAR MENU */}
             <MDBContainer fluid>
-                <MDBListGroup>
+                <MDBListGroup className="py-2">
                     {renderMenu()}
                 </MDBListGroup>
             </MDBContainer>

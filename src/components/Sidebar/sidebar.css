@@ -1,4 +1,5 @@
 .sidebar-admin {
+    background: #2E2E2E;
     position: fixed;
     overflow-y: auto;
     min-height: 100vh;
@@ -10,7 +11,6 @@
 
 #side-menu {
     text-decoration: none;
-    letter-spacing: .5px;
     color: #3d3d3d;
     padding-top: 8px;
     padding-bottom: 8px;

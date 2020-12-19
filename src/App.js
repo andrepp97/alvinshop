@@ -1,11 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { AuthContext } from './context/AuthContext';
+import { setClientToken } from './api/APIRequest';
 
 // COMPONENTS
 import Router from './Routes/Router';
 import Navbar from './components/Header';
 import Sidebar from './components/Sidebar';
 import LoadingScreen from './components/LoadingScreen';
+
+const prefix = "@alvinshop/admin";
 
 const App = () => {
   // CONTEXT
@@ -14,16 +17,22 @@ const App = () => {
   // LIFECYCLE
   useEffect(() => {
     const restoreToken = () => {
-      let userToken = localStorage.getItem("@alvinshop")
-      setTimeout(() => {
+      let userToken = JSON.parse(localStorage.getItem(prefix))
+      if (userToken) {
+        setClientToken(userToken)
         dispatch({
           type: "LOGIN",
-          id: 1,
-          username: "Alvinshop",
-          role: "sysadmin",
-          token: userToken,
+          id: userToken.id,
+          role: userToken.role,
+          token: userToken.token,
+          username: userToken.username,
         })
-      }, 1000)
+      } else {
+        console.log('Unauthorized')
+        dispatch({
+          type: "LOGOUT"
+        })
+      }
     }
 
     restoreToken()

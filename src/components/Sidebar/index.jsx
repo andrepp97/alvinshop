@@ -8,10 +8,10 @@ import './sidebar.css';
 
 const sideMenu = [
     { label: 'Dashboard', url: '/Dashboard', icon: 'tachometer-alt' },
-    { label: 'Products', url: '/Products', icon: 'gamepad' },
-    { label: 'Category', url: '/Category', icon: 'th-list' },
-    { label: 'Orders', url: '/Orders', icon: 'shopping-cart' },
     { label: 'Banners', url: '/Banners', icon: 'images' },
+    { label: 'Category', url: '/Category', icon: 'th-list' },
+    { label: 'Products', url: '/Products', icon: 'gamepad' },
+    { label: 'Orders', url: '/Orders', icon: 'shopping-cart' },
 ]
 
 const Sidebar = (props) => {

@@ -67,12 +67,30 @@ export const useStyles = makeStyles((theme) => ({
       objectPosition: 'center',
       borderRadius: '4px',
     },
+    textInput: {
+      width: '100%',
+      marginTop: '6px !important',
+      marginBottom: '6px !important',
+    },
+    textRight: {
+      textAlign: 'right',
+    },
+    media: {
+      height: 150,
+    },
     opacity70: {
         opacity: .7
     },
+    mb1: {
+      marginBottom: '8px',
+    },
     my1: {
-        marginTop: '8px',
-        marginBottom: '8px',
+        marginTop: '8px !important',
+        marginBottom: '8px !important',
+    },
+    my2: {
+      marginTop: '16px',
+      marginBottom: '16px',
     },
     mx1: {
         marginLeft: '4px',
@@ -81,5 +99,5 @@ export const useStyles = makeStyles((theme) => ({
     py1: {
         paddingTop: '8px',
         paddingBottom: '8px',
-    }
+    },
 }))

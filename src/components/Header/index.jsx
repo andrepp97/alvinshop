@@ -7,6 +7,8 @@ import {
 } from "mdbreact";
 import { AuthContext } from '../../context/AuthContext';
 
+const prefix = "@alvinshop/admin";
+
 const NavbarPage = () => {
     // CONTEXT
     const { dispatch } = useContext(AuthContext)
@@ -30,7 +32,7 @@ const NavbarPage = () => {
 
     // LOGOUT FUNCTION
     const onUserLogout = () => {
-        localStorage.removeItem("@alvinshop")
+        localStorage.removeItem(prefix)
         navClose()
         dispatch({
             type: 'LOGOUT'
@@ -44,7 +46,8 @@ const NavbarPage = () => {
             id="topnav"
             color="unique-color-dark"
             className="pr-5 py-1"
-            style={{marginLeft:'225px', transition: '.25s'}}>
+            style={{marginLeft:'225px', transition: '.25s'}}
+        >
 
             <span id="toggleLeft" className="text-white pointer-cursor" onClick={navClose}>
                 <i className="fa fa-chevron-left"></i>

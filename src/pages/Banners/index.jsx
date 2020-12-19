@@ -104,6 +104,7 @@ const BannerPage = () => {
                         xs={12}
                         sm={6}
                         md={4}
+                        lg={3}
                         key={banner.id}
                     >
                         <Card>
@@ -136,6 +137,7 @@ const BannerPage = () => {
                     xs={12}
                     sm={6}
                     md={4}
+                    lg={3}
                 >
                     <FilePond
                         maxFiles={1}
@@ -143,7 +145,7 @@ const BannerPage = () => {
                         allowMultiple={false}
                         acceptedFileTypes={['image/*']}
                         onupdatefiles={files => setNewBanner(files)}
-                        labelIdle='<span class="filepond--label-action">Upload New Banner</span>'
+                        labelIdle='<span class="filepond--label-action">Drag & Drop your Banner here</span>'
                     />
                     <TextField
                         size="small"
@@ -163,6 +165,7 @@ const BannerPage = () => {
                     />
                     <div className={classes.textRight}>
                         <Button
+                            size="small"
                             color="primary"
                             variant="contained"
                             onClick={onUploadBanner}

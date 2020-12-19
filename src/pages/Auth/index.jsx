@@ -4,6 +4,7 @@ import { MDBInput } from 'mdbreact';
 import './auth.css';
 
 import { AuthContext } from '../../context/AuthContext';
+import APIRequest, { setClientToken } from '../../api/APIRequest';
 
 const Auth = () => {
     // CONTEXT
@@ -17,22 +18,31 @@ const Auth = () => {
     })
 
     // LOGIN FUNCTION
-    const onUserLogin = () => {
-        if (state.username === "sysadmin" && state.password === "admin") {
-            setLoading(true)
-            let userToken = "jjK02.p9swQ880"
-            localStorage.setItem("@alvinshop", userToken)
-            setTimeout(() => {
+    const onUserLogin = async () => {
+        if (state.username && state.password) {
+            try {
+                setLoading(true)
+                const body = {
+                    username: state.username,
+                    password: state.password,
+                }
+
+                const res = await APIRequest.post('admin/login', body)
+                const {data} = res
+
+                setClientToken(data.data)
+
                 dispatch({
                     type: "LOGIN",
-                    id: 1,
-                    username: "Alvinshop",
-                    role: "sysadmin",
-                    token: userToken,
+                    id: data.data.id,
+                    username: data.data.username,
+                    role: data.data.role,
+                    token: data.data.token,
                 })
-            }, 1000)
-        } else {
-            alert("Unauthorized")
+            } catch (err) {
+                console.log(err)
+                setLoading(false)
+            }
         }
     }
 

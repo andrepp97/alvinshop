@@ -4,8 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 // APP
 import App from './App';
-import './assets/styles/Global.css';
 import AuthReducer from './context/AuthContext';
+
+// CSS
+import './assets/styles/Global.css';
+import 'filepond/dist/filepond.min.css';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
 
 // MDBREACT
 import '@fortawesome/fontawesome-free/css/all.min.css';

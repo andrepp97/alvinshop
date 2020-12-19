@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
@@ -38,7 +37,7 @@ const ProductPage = () => {
             const body = { limit, offset: pagination }
             APIRequest.post('admin/showProduk', body)
             .then(({data}) => {
-                console.log("Products", data)
+                // console.log("Products", data)
                 // setProducts(data.data.data)
                 // if (data.data.total) setTotal(data.data.total)
             })

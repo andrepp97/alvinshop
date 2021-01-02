@@ -23,7 +23,7 @@
     "react-scripts": "3.4.0"
   },
   "scripts": {
-    "start": "PORT=80 react-scripts start",
+    "start": "PORT=81 react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
